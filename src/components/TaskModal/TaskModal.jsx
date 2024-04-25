@@ -1,12 +1,5 @@
-// import { getDatabase, ref, child, push, update } from "firebase/database";
-// import { db } from "../../firebase/firebase";
-// import { doc, updateDoc } from "firebase/firestore";
-// import { arrayUnion } from "firebase/firestore";
+
 import { getTodos } from "../../store/slices/todoSlice";
-// import { arrayRemove } from "firebase/firestore";
-import { getDatabase, remove } from "firebase/database";
-import { ref } from "firebase/database";
-import { update } from "firebase/database";
 import { useAuth } from "../../hooks/use-auth";
 
 // import { FieldValue } from "firebase/firestore";
@@ -26,19 +19,8 @@ const TaskModal = ({
   const { email, token } = useAuth();
   const dispatch = useDispatch();
   async function updateTitle() {
-    const db = getDatabase();
-
-    const updates = {};
-
-    updates[`users/${token}/${dataModal.currentIndex}/title`] = dataModal.title;
-    updates[`users/${token}/${dataModal.currentIndex}/descr`] = dataModal.descr;
-
-    update(ref(db), updates)
-      .then(() => {
-        dispatch(getTodos(token));
-        setModalIsOpen(false);
-      })
-      .catch((error) => console.log(error.message));
+    
+ 
   }
 
   function hexToRgb(hex) {
@@ -51,12 +33,7 @@ const TaskModal = ({
   }
 
   const deleteTask = async () => {
-    const db = getDatabase()
-    remove(ref(db, 'users/' + token + '/' + dataModal.currentIndex))
-    setModalIsOpen(false)
-
-
-    dispatch(getTodos(token));
+   
   
   }
 
@@ -107,7 +84,6 @@ const TaskModal = ({
 
         <div className="task-modal__btn-box">
           <button className="task-modal__apply" onClick={() => updateTitle()}>
-            {/* token, index, email, value */}
             Apply
           </button>
 

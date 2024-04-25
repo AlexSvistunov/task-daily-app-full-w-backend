@@ -1,17 +1,9 @@
 import { useState } from "react";
-// import { addDoc, updateDoc } from "firebase/firestore";
-// import { collection } from "firebase/firestore";
-// import { db } from "../../firebase/firebase";
-// import { doc } from "firebase/firestore";
-// import { setDoc } from "firebase/firestore";
-// import { arrayUnion } from "firebase/firestore";
-// import { getDoc } from "firebase/firestore";
+
 
 import { useAuth } from "../../hooks/use-auth";
 import { useEffect } from "react";
 import { getTodos } from "../../store/slices/todoSlice";
-
-import { getDatabase, ref, set } from "firebase/database";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -47,26 +39,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
   };
 
   const addTask = async (title, descr, email, day, color, tag) => {
-    if (validateTask() === true) {
-      const currentIndex = uuidv4();
-      const db = getDatabase();
-      set(ref(db, "users/" + token + "/" + currentIndex), {
-        title,
-        descr,
-        email,
-        day,
-        color,
-        tag,
-        currentIndex,
-        done: false,
-        date: new Date().toISOString(),
-      });
-
-      dispatch(getTodos(token));
-      showListHandler()
-    }
-
-    return
+   
   };
 
   const setColor = (color) => {

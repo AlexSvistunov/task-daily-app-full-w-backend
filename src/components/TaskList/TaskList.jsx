@@ -4,13 +4,8 @@ import { getTodos } from "../../store/slices/todoSlice";
 import { useAuth } from "../../hooks/use-auth";
 import TaskModal from "../TaskModal/TaskModal";
 import { useState } from "react";
-import { get } from "firebase/database";
-import { ref } from "firebase/database";
-import { getDatabase } from "firebase/database";
-import { child } from "firebase/database";
 import { HashLoader } from "react-spinners";
 
-import { update } from "firebase/database";
 
 import "./TaskList.css";
 import TaskItem from "../TaskItem/TaskItem";
@@ -45,13 +40,13 @@ const TaskList = ({
   const todosTagsArray = [];
   const todosSortTags = [];
 
-  todosForDate.forEach((todo) => {
-    if (!todosTagsArray.includes(todo.tag)) {
-      todosTagsArray.push(todo.tag);
-    } else {
-      return;
-    }
-  });
+  // todosForDate.forEach((todo) => {
+  //   if (!todosTagsArray.includes(todo.tag)) {
+  //     todosTagsArray.push(todo.tag);
+  //   } else {
+  //     return;
+  //   }
+  // });
 
   todosTagsArray.forEach((tag) => {
     const items = todosForDate.filter((todo) => todo.tag === tag);
@@ -63,18 +58,7 @@ const TaskList = ({
   console.log(todosSortTags);
 
   async function updateIsDone(index, isDone) {
-    const db = getDatabase();
-
-    const updates = {};
-
-    updates[`users/${token}/${index}/done`] = !isDone;
-
-    update(ref(db), updates)
-      .then(() => {
-        dispatch(getTodos(token));
-        console.log("success");
-      })
-      .catch((error) => console.log(error.message));
+  
   }
 
   if (isLoading) {
@@ -93,12 +77,9 @@ const TaskList = ({
   }
 
   console.log(todosSortTags);
-
-  // console.log(todosSortTags[0]['Daily Routine'][0]);
   todosSortTags?.forEach((tagObject) => {
     tagObject[Object.keys(tagObject)].forEach((el) => console.log(el));
   });
-  // {tagObject[Object.keys(tagObject)]}
 
   if (isSortedByTags && todosForDate.length) {
     return (
@@ -132,7 +113,7 @@ const TaskList = ({
   return (
     <section className="task-list">
       <ul className="tasks-list">
-        {todosForDate.length ? (
+        {todosForDate?.length ? (
           todosForDate
             .filter((element) => !element.done)
             .map((el) => (
@@ -155,7 +136,7 @@ const TaskList = ({
         )}
       </ul>
 
-      {todosForDate.length ? (
+      {todosForDate?.length ? (
         <div className="task-list__done">
           <h3 className="task-list__done-title">Done</h3>
           <ul className="tasks-list__done">
