@@ -1,0 +1,30 @@
+.header {
+  padding: 7px 0 3px;
+  border: 1px solid #ced3d7;
+}
+
+.logo {
+  cursor: pointer;
+  display: block;
+  width: 236px;
+  height: 60px;
+  background-image: url('/src/assets/images/logo.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__links {
+  display: flex;
+  gap: 20px;
+}
+
+.header__link {
+  font-size: 18px;
+}
