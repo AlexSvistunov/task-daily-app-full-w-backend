@@ -1,10 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { URL } from "../../utils/api";
 
 
 
 export const getTodos = createAsyncThunk("todos/getTodos", async (token) => {
   
 });
+
+export const createToDo = createAsyncThunk('todos/createTodo', async () => {
+  
+})
 
 const initialState = {
   todoList: [],

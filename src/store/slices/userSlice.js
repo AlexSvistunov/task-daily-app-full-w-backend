@@ -1,4 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { URL } from "../../utils/api";
+
+
+export const login = createAsyncThunk('user/login', async () => {
+  try {
+    fetch(`${URL}/auth/token/login/`)
+  } catch (error) {
+    
+  }
+})
+
+fetch('https://api.example.com/posts', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ title: 'New Post', body: 'This is a new post' })
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
 
 
 const initialState = {
@@ -6,6 +27,7 @@ const initialState = {
   id: null,
   email: localStorage.getItem('email')?.length ? localStorage.getItem('email') : null,
 }
+
 
 const userSlice = createSlice({
   name: 'user',
