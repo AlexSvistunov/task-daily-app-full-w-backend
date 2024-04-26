@@ -11,10 +11,12 @@ import { login } from '../../store/slices/userSlice';
 const LogIn = () => {
 
   const navigate = useNavigate()
+  
   const dispatch = useDispatch()
 
   const onClickAuth = (email, password) => {
-    dispatch(login(email, password))
+
+    dispatch(login({email, password}))
   }
 
 

@@ -6,6 +6,8 @@ const Auth = ({ propWord, onClickAuth }) => {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
 
+  console.log(password);
+
   const passwordOnChangeHandler = (value) => {
     setPassword(value)
   }
@@ -41,7 +43,7 @@ const Auth = ({ propWord, onClickAuth }) => {
                 ></input>
               </div>
             </div>
-            <button className="auth__btn" onClick={() => {onClickAuth(email, password)}}>{propWord}</button>
+            <button className="auth__btn" onClick={() => onClickAuth(email, password)}>{propWord}</button>
           </div>
         </div>
       </div>

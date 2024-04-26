@@ -1,26 +1,29 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { URL } from "../../utils/api";
 
-export const login = createAsyncThunk("user/login", async (email, password) => {
+export const login = createAsyncThunk("user/login", async ({password, email}) => {
 
   try {
-    fetch(`${URL}/auth/token/login/`, {
+    const response = await fetch(`${URL}/api/auth/token/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({ email: email, password: password}),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+      body: JSON.stringify({ password: password, email: email }),
+    });
 
+    if (!response.ok) {
+      throw new Error("Failed to login");
+    }
 
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Error!!!", error);
+    throw error;
   }
 });
-
 const initialState = {
   token: localStorage.getItem("token")?.length
     ? localStorage.getItem("token")
