@@ -21,7 +21,6 @@ const TaskItem = ({
   );
 
 
-
   return (
     <li
       className="tasks-list__task list-task"

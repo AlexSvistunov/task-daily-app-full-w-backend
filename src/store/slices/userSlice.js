@@ -33,24 +33,47 @@ export const logOut = createAsyncThunk("user/logout", async (token) => {
   try {
     const response = fetch(`${URL}/api/auth/token/logout/`, {
       method: "POST",
+
       headers: {
-        'Authorization': token
-        
+        Authorization: `Token ${token}`,
       },
     });
 
-    if (!response.ok) {
-      throw new Error("Fail");
+    if (response.status === "204") {
+      const data = await response.json();
+      console.log(data);
+      return data;
     }
-
-    const data = await response.json();
-    console.log(data);
   } catch (error) {
     console.error("Error!!!", error);
     throw error;
   }
 });
 
+export const signUp = createAsyncThunk(
+  "user/signup",
+  async ({ email, password }) => {
+    try {
+      const response = await fetch(`${URL}/api/users/register/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          userName: email,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Пользователь Зареган!");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
 const initialState = {
   token: localStorage.getItem("token")?.length
     ? localStorage.getItem("token")

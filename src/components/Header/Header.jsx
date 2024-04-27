@@ -12,8 +12,8 @@ const Header = () => {
 
 
   const logOutHandler = () => {
-    dispatch(removeUser())
-    // dispatch(logOut(token))
+    // dispatch(removeUser())
+    dispatch(logOut(token))
   }
   return (
     <header className="header">

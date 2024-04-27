@@ -76,7 +76,6 @@ const TaskList = ({
     );
   }
 
-  console.log(todosSortTags);
   todosSortTags?.forEach((tagObject) => {
     tagObject[Object.keys(tagObject)].forEach((el) => console.log(el));
   });
