@@ -5,5 +5,6 @@ export function useAuth() {
 
   return {
     isAuth: !!token,
+    token: token,
   };
 }

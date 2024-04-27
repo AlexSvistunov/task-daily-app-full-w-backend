@@ -1,36 +1,60 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { URL } from "../../utils/api";
 
+export const login = createAsyncThunk(
+  "user/login",
+  async ({ password, email }) => {
+    try {
+      const response = await fetch(`${URL}/api/auth/token/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-export const login = createAsyncThunk("user/login", async ({password, email}) => {
+        body: JSON.stringify({ password: password, email: email }),
+      });
 
+      if (!response.ok) {
+        throw new Error("Failed to login");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error("Error!!!", error);
+      throw error;
+    }
+  }
+);
+
+export const logOut = createAsyncThunk("user/logout", async (token) => {
+  console.log(token);
   try {
-    const response = await fetch(`${URL}/api/auth/token/login/`, {
+    const response = fetch(`${URL}/api/auth/token/logout/`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        'Authorization': token
+        
       },
-
-      body: JSON.stringify({ password: password, email: email }),
     });
 
     if (!response.ok) {
-      throw new Error("Failed to login");
+      throw new Error("Fail");
     }
 
     const data = await response.json();
-    console.log(data)
-    return data;
+    console.log(data);
   } catch (error) {
     console.error("Error!!!", error);
     throw error;
   }
 });
+
 const initialState = {
   token: localStorage.getItem("token")?.length
     ? localStorage.getItem("token")
     : null,
-
 };
 
 const userSlice = createSlice({
@@ -38,19 +62,22 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     removeUser: (state) => {
-      localStorage.removeItem('token')
-      state.token = null
+      localStorage.removeItem("token");
+      state.token = null;
     },
   },
 
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      state.token = action.payload.auth_token
-      localStorage.setItem('token', action.payload.auth_token)
-    })
-  }
+      state.token = action.payload.auth_token;
+      localStorage.setItem("token", action.payload.auth_token);
+    });
 
- 
+    builder.addCase(logOut.fulfilled, (state) => {
+      localStorage.removeItem("token");
+      state.token = null;
+    });
+  },
 });
 
 export default userSlice.reducer;

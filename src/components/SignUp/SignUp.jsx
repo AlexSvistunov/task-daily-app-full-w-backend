@@ -9,7 +9,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   const onClickAuth = (email, password) => {
-    const auth = getAuth();
+   
     
   };
 

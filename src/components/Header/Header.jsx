@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/use-auth";
 import { removeUser } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
+import { logOut } from "../../store/slices/userSlice";
 
 const Header = () => {
-  const { isAuth, email } = useAuth();
+  const { isAuth, token } = useAuth();
   const dispatch = useDispatch()
 
+
   const logOutHandler = () => {
-    dispatch(removeUser())
+    // dispatch(removeUser())
+    dispatch(logOut(token))
   }
   return (
     <header className="header">
@@ -19,7 +22,7 @@ const Header = () => {
 
         {isAuth ? (
           <div style={{display: 'flex', gap: '20px', alignItems: 'center'}}>
-            <div style={{color: '#CA87F4', fontSize: '20px'}}>{email}</div>
+            <div style={{color: '#CA87F4', fontSize: '20px'}}>email</div>
             <button onClick={logOutHandler} style={{background: 'transparent', border: '1px solid #CA87F4', cursor: 'pointer', fontSize: '20px', padding: '5px 10px', borderRadius: '5px', color: '#CA87F4'}}>Log out</button>
           </div>
         ) : (
