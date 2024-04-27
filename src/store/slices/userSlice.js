@@ -37,11 +37,9 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action) => {
-
-    },
     removeUser: (state) => {
-
+      localStorage.removeItem('token')
+      state.token = null
     },
   },
 

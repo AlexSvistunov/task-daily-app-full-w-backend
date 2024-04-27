@@ -14,9 +14,14 @@ const LogIn = () => {
   
   const dispatch = useDispatch()
 
-  const onClickAuth = (email, password) => {
+  const onClickAuth = async (email, password) => {
 
-    dispatch(login({email, password}))
+    dispatch(login({email, password})).then(data => {
+      if(data.type === 'user/login/fulfilled') {
+        navigate(ROUTES.LANDINGPAGE)
+      }
+    })
+
   }
 
 
