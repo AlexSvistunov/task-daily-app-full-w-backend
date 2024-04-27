@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { URL } from "../../utils/api";
 
+
 export const login = createAsyncThunk("user/login", async ({password, email}) => {
 
   try {
@@ -18,6 +19,7 @@ export const login = createAsyncThunk("user/login", async ({password, email}) =>
     }
 
     const data = await response.json();
+    console.log(data)
     return data;
   } catch (error) {
     console.error("Error!!!", error);
@@ -28,10 +30,7 @@ const initialState = {
   token: localStorage.getItem("token")?.length
     ? localStorage.getItem("token")
     : null,
-  id: null,
-  email: localStorage.getItem("email")?.length
-    ? localStorage.getItem("email")
-    : null,
+
 };
 
 const userSlice = createSlice({
@@ -39,19 +38,21 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      console.log(action.payload);
-      state.email = action.payload.email;
-      state.id = action.payload.id;
-      state.token = action.payload.token;
+
     },
     removeUser: (state) => {
-      state.email = null;
-      state.id = null;
-      state.token = null;
-      localStorage.removeItem("token");
-      localStorage.removeItem("email");
+
     },
   },
+
+  extraReducers: (builder) => {
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.token = action.payload.auth_token
+      localStorage.setItem('token', action.payload.auth_token)
+    })
+  }
+
+ 
 });
 
 export default userSlice.reducer;
