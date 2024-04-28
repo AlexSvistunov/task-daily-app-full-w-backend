@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "../../hooks/use-auth";
 import { useEffect } from "react";
 import { getTodos } from "../../store/slices/todoSlice";
+import { createToDo } from "../../store/slices/todoSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -22,6 +23,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
   const [currentColor, setCurrentColor] = useState(["Фисташковый", "#ADF7B6"]);
   const { email, token } = useAuth();
 
+
   useEffect(() => {
     dispatch(getTodos(token));
   }, []);
@@ -39,7 +41,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
   };
 
   const addTask = async (title, descr, email, day, color, tag) => {
-   
+   dispatch(createToDo({title, descr, color, tag}))
   };
 
   const setColor = (color) => {

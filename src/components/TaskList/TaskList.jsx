@@ -6,7 +6,6 @@ import TaskModal from "../TaskModal/TaskModal";
 import { useState } from "react";
 import { HashLoader } from "react-spinners";
 
-
 import "./TaskList.css";
 import TaskItem from "../TaskItem/TaskItem";
 
@@ -26,159 +25,12 @@ const TaskList = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTodos(token));
-  }, []);
+    const response = dispatch(getTodos(token));
+    console.log(response)
+  }, [dispatch, token]);
 
-  const todos = useSelector((state) => state.todos.todoList);
-  const isLoading = useSelector((state) => state.todos.isLoading);
-  const todosForDate =
-    todos &&
-    todos
-      .filter((el) => el["day"] === currentDate.toLocaleDateString())
-      .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  const todosTagsArray = [];
-  const todosSortTags = [];
-
-  // todosForDate.forEach((todo) => {
-  //   if (!todosTagsArray.includes(todo.tag)) {
-  //     todosTagsArray.push(todo.tag);
-  //   } else {
-  //     return;
-  //   }
-  // });
-
-  todosTagsArray.forEach((tag) => {
-    const items = todosForDate.filter((todo) => todo.tag === tag);
-    todosSortTags.push({
-      [tag]: items,
-    });
-  });
-
-  console.log(todosSortTags);
-
-  async function updateIsDone(index, isDone) {
-  
-  }
-
-  if (isLoading) {
-    return (
-      <section
-        className="task-list"
-        style={{
-          margin: "200px auto",
-          height: "200px",
-          width: "200px",
-        }}
-      >
-        <HashLoader color="#CA87F4" size={150} />
-      </section>
-    );
-  }
-
-  todosSortTags?.forEach((tagObject) => {
-    tagObject[Object.keys(tagObject)].forEach((el) => console.log(el));
-  });
-
-  if (isSortedByTags && todosForDate.length) {
-    return (
-      <>
-        <div className="sort-list">
-          {todosSortTags?.length &&
-            todosSortTags?.map((tagObject, index) => (
-              <div key={index} className="sort-item">
-                <h3 className="sort-item__title">{Object.keys(tagObject)}</h3>
-                <div className="sort-item__todo-inner">
-                  {tagObject[Object.keys(tagObject)].map((el) => (
-                    <TaskItem
-                      key={el.title}
-                      color={el.color}
-                      setModalIsOpen={setModalIsOpen}
-                      setDataModal={setDataModal}
-                      dataModal={dataModal}
-                      el={el}
-                      updateIsDone={updateIsDone}
-                      index={el.currentIndex}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-        </div>
-      </>
-    );
-  }
-
-  return (
-    <section className="task-list">
-      <ul className="tasks-list">
-        {todosForDate?.length ? (
-          todosForDate
-            .filter((element) => !element.done)
-            .map((el) => (
-              <TaskItem
-                key={el.title}
-                color={el.color}
-                setModalIsOpen={setModalIsOpen}
-                setDataModal={setDataModal}
-                dataModal={dataModal}
-                el={el}
-                updateIsDone={updateIsDone}
-                index={el.currentIndex}
-              />
-            ))
-        ) : (
-          <img
-            src="/nothing-here.png"
-            style={{ display: "block", margin: "200px auto" }}
-          ></img>
-        )}
-      </ul>
-
-      {todosForDate?.length ? (
-        <div className="task-list__done">
-          <h3 className="task-list__done-title">Done</h3>
-          <ul className="tasks-list__done">
-            {todosForDate.length ? (
-              todosForDate
-                .filter((element) => element.done)
-                .map((el) => (
-                  <TaskItem
-                    key={el.title}
-                    color={el.color}
-                    setModalIsOpen={setModalIsOpen}
-                    setDataModal={setDataModal}
-                    dataModal={dataModal}
-                    el={el}
-                    updateIsDone={updateIsDone}
-                    index={el.currentIndex}
-                  />
-                ))
-            ) : (
-              <img
-                src="/nothing-here.png"
-                style={{ display: "block", margin: "200px auto" }}
-              ></img>
-            )}
-          </ul>
-        </div>
-      ) : null}
-      <button className="task-list__btn" onClick={showListHandler}>
-        <span className="material-symbols-outlined">add_task</span>
-      </button>
-
-      {modalIsOpen && (
-        <TaskModal
-          modalIsOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
-          dataModal={dataModal}
-          setDataModal={setDataModal}
-          index={index}
-          setIndex={setIndex}
-        />
-      )}
-    </section>
-  );
+  return <div></div>;
 };
 
 export default TaskList;

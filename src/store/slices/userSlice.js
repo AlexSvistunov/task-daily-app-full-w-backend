@@ -53,7 +53,7 @@ export const logOut = createAsyncThunk("user/logout", async (token) => {
 export const signUp = createAsyncThunk(
   "user/signup",
   async ({ email, password }) => {
-    try {
+
       const response = await fetch(`${URL}/api/users/register/`, {
         method: "POST",
         headers: {
@@ -62,16 +62,15 @@ export const signUp = createAsyncThunk(
         body: JSON.stringify({
           email: email,
           password: password,
-          userName: email,
+          username: email,
         }),
       });
 
-      if (response.ok) {
-        alert("Пользователь Зареган!");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+      const data = await response.json();
+      console.log(data);
+
+
+      return data;
   }
 );
 const initialState = {
@@ -102,6 +101,10 @@ const userSlice = createSlice({
     });
   },
 });
+
+// register validation
+// email
+// creating-todo
 
 export default userSlice.reducer;
 
