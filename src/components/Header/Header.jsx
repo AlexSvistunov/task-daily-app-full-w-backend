@@ -5,25 +5,54 @@ import { useAuth } from "../../hooks/use-auth";
 import { removeUser } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../store/slices/userSlice";
+import { getMyData } from "../../store/slices/userSlice";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const { isAuth, token } = useAuth();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
+  const [myData, setMyData] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await dispatch(getMyData(token));
+      setMyData(response.payload);
+    };
+
+    fetchData()
+  }, [dispatch, token]);
+
+  console.log(myData);
 
   const logOutHandler = () => {
     // dispatch(removeUser())
-    dispatch(logOut(token))
-  }
+    dispatch(logOut(token));
+  };
   return (
     <header className="header">
       <div className="container header__container">
         <Link className="logo header__logo" to={ROUTES.LANDINGPAGE}></Link>
 
         {isAuth ? (
-          <div style={{display: 'flex', gap: '20px', alignItems: 'center'}}>
-            <div style={{color: '#CA87F4', fontSize: '20px'}}>email</div>
-            <button onClick={logOutHandler} style={{background: 'transparent', border: '1px solid #CA87F4', cursor: 'pointer', fontSize: '20px', padding: '5px 10px', borderRadius: '5px', color: '#CA87F4'}}>Log out</button>
+          <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+            <div style={{ color: "#CA87F4", fontSize: "20px" }}>
+              {myData.email}
+            </div>
+            <button
+              onClick={logOutHandler}
+              style={{
+                background: "transparent",
+                border: "1px solid #CA87F4",
+                cursor: "pointer",
+                fontSize: "20px",
+                padding: "5px 10px",
+                borderRadius: "5px",
+                color: "#CA87F4",
+              }}
+            >
+              Log out
+            </button>
           </div>
         ) : (
           <div className="header__links">

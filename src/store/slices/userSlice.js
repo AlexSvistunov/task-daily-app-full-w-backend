@@ -4,14 +4,16 @@ import { URL } from "../../utils/api";
 export const login = createAsyncThunk(
   "user/login",
   async ({ password, email }) => {
+
     try {
+
       const response = await fetch(`${URL}/api/auth/token/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
 
-        body: JSON.stringify({ password: password, email: email }),
+        body: JSON.stringify({ password: password, email: email}),
       });
 
       if (!response.ok) {
@@ -21,6 +23,7 @@ export const login = createAsyncThunk(
       const data = await response.json();
       console.log(data);
       return data;
+
     } catch (error) {
       console.error("Error!!!", error);
       throw error;
@@ -73,6 +76,24 @@ export const signUp = createAsyncThunk(
       return data;
   }
 );
+
+export const getMyData = createAsyncThunk('user/getMyData', async (token) => {
+  
+  const response = await fetch(`${URL}/api/users/me/`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+
+  const data = await response.json();
+  console.log(data);
+
+
+  return data;
+})
+
+
 const initialState = {
   token: localStorage.getItem("token")?.length
     ? localStorage.getItem("token")
@@ -102,9 +123,6 @@ const userSlice = createSlice({
   },
 });
 
-// register validation
-// email
-// creating-todo
 
 export default userSlice.reducer;
 

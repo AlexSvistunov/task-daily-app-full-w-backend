@@ -25,10 +25,13 @@ const TaskList = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const response = dispatch(getTodos(token));
-    console.log(response)
-  }, [dispatch, token]);
+    const fetchRequest = async () => {
+      const response = await dispatch(getTodos(token));
+      console.log(response)
+    };
 
+    fetchRequest()
+  }, [dispatch, token]);
 
   return <div></div>;
 };

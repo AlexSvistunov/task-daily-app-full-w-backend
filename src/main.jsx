@@ -38,3 +38,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // когда getStarted и пользователь не авторизован - можно что-нибудь лучше придумать, чем перекидывать на register. ну или в register плашка у вас уже есть аккаунт?
 // хранить в куках token
 // удалил email из redux
+
+
+// register validation
+// email
+// creating-todo
+// подумать в целом про запросы допустим к email или redux
+// подумать про обработку ошибок
+// а если токен недопустимый?

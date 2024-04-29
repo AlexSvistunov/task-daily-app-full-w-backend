@@ -24,7 +24,6 @@ const LogIn = () => {
 
   }
 
-
   return (
     <>
       <Auth propWord={'Log In'} onClickAuth={onClickAuth}/>
