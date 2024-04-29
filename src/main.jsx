@@ -38,6 +38,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // когда getStarted и пользователь не авторизован - можно что-нибудь лучше придумать, чем перекидывать на register. ну или в register плашка у вас уже есть аккаунт?
 // хранить в куках token
 // удалил email из redux
+// а если запрос для получение email долго идет?
+
+// если пользователь уже зареган или авторизован - то нет смысла ему переходить в роуты Login, Register
+//update is done
 
 
 // register validation

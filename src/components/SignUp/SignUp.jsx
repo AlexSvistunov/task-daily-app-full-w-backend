@@ -10,8 +10,17 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   const onClickAuth = (email, password) => {
-    dispatch(signUp({email, password}))
-    
+    dispatch(signUp({ email, password })).then((data) => {
+      if (data.payload.email) {
+        alert(data.payload.email);
+      }
+
+      if (data.payload.password) {
+        alert(data.payload.password);
+      } else {
+        navigate(ROUTES.LANDINGPAGE);
+      }
+    });
   };
 
   return (
@@ -21,6 +30,5 @@ const SignUp = () => {
   );
 };
 
-// redux persist
 
 export default SignUp;

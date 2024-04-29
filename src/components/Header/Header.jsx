@@ -16,17 +16,16 @@ const Header = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await dispatch(getMyData(token));
+      const response = await dispatch(getMyData({ token }));
       setMyData(response.payload);
     };
 
-    fetchData()
+    if (token) {
+      fetchData();
+    }
   }, [dispatch, token]);
 
-  console.log(myData);
-
   const logOutHandler = () => {
-    // dispatch(removeUser())
     dispatch(logOut(token));
   };
   return (

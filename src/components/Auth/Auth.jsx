@@ -6,7 +6,6 @@ const Auth = ({ propWord, onClickAuth }) => {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
 
-  console.log(password);
 
   const passwordOnChangeHandler = (value) => {
     setPassword(value)
