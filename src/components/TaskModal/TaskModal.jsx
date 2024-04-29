@@ -44,8 +44,8 @@ const TaskModal = ({
       <div
         className="task-modal__inner"
         style={{
-          backgroundColor: hexToRgb(dataModal.color),
-          boxShadow: `-3px 4px 5px ${hexToRgb(dataModal.color)}`,
+          backgroundColor: hexToRgb(dataModal.color_code),
+          boxShadow: `-3px 4px 5px ${hexToRgb(dataModal.color_code)}`,
         }}
       >
         <div className="task-modal__content">
@@ -65,7 +65,7 @@ const TaskModal = ({
             className="task-modal__input"
             type="text"
             placeholder="Descr"
-            value={dataModal.descr}
+            value={dataModal.description}
             onChange={(e) =>
               setDataModal({
                 ...dataModal,
