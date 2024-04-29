@@ -2,9 +2,10 @@
 import { getTodos } from "../../store/slices/todoSlice";
 import { useAuth } from "../../hooks/use-auth";
 
-// import { FieldValue } from "firebase/firestore";
 
 import { useEffect } from "react";
+
+import { changeTodo } from "../../store/slices/todoSlice";
 
 import "./TaskModal.css";
 import { useDispatch } from "react-redux";
@@ -15,12 +16,13 @@ const TaskModal = ({
   dataModal,
   setDataModal,
 }) => {
+
   console.log(dataModal);
   const { email, token } = useAuth();
   const dispatch = useDispatch();
+
   async function updateTitle() {
-    
- 
+    await dispatch(changeTodo({token, id: dataModal.id, newFields: {title: dataModal.title, description: dataModal.descr}}));
   }
 
   function hexToRgb(hex) {

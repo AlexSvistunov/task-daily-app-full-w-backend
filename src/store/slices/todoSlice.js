@@ -43,6 +43,27 @@ export const createToDo = createAsyncThunk(
   }
 );
 
+export const changeTodo = createAsyncThunk('todos/changeTodo', async ({token, id, newFields}) => {
+
+  const response = await fetch(`${URL}/api/tasks/${id}`, {
+    method: 'PATCH',
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Token ${token}`,
+    },
+
+    body: JSON.stringify({title: newFields.title ? newFields.title : null, description: newFields.description ? newFields.description : null})
+
+  })
+
+  const data = await response.json();
+  console.log(data);
+
+  return data;
+
+
+})
+
 const initialState = {
   todoList: [],
   isLoading: false,
