@@ -24,7 +24,7 @@ const Aside = ({ currentDay, changeDay }) => {
           <li className="task">
             <span className="task__name">For this day</span>
             <span className="task__amount">
-
+              {todos.length}
               {/* {todosForDate && todosForDate.length} */}
             </span>
           </li>
