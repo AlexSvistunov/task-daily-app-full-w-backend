@@ -6,6 +6,7 @@ import { useAuth } from "../../hooks/use-auth";
 import { useEffect } from "react";
 
 import { changeTodo } from "../../store/slices/todoSlice";
+import { deleteTodo } from "../../store/slices/todoSlice";
 
 import "./TaskModal.css";
 import { useDispatch } from "react-redux";
@@ -17,12 +18,11 @@ const TaskModal = ({
   setDataModal,
 }) => {
 
-  console.log(dataModal);
   const { email, token } = useAuth();
   const dispatch = useDispatch();
 
   async function updateTitle() {
-    await dispatch(changeTodo({token, id: dataModal.id, newFields: {title: dataModal.title, description: dataModal.descr}}));
+    await dispatch(changeTodo({token, id: dataModal.id, newFields: {title: dataModal.title, description: dataModal.description}}));
   }
 
   function hexToRgb(hex) {
@@ -35,7 +35,7 @@ const TaskModal = ({
   }
 
   const deleteTask = async () => {
-   
+   await dispatch(deleteTodo({token, id: dataModal.id}))
   
   }
 
@@ -71,7 +71,7 @@ const TaskModal = ({
             onChange={(e) =>
               setDataModal({
                 ...dataModal,
-                ["descr"]: e.target.value,
+                ["description"]: e.target.value,
               })
             }
           ></input>

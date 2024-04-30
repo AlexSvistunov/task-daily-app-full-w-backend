@@ -19,7 +19,6 @@ export const getTodos = createAsyncThunk(
       },
     });
     const data = await response.json();
-    console.log(data);
 
     return data;
   }
@@ -51,7 +50,6 @@ export const createToDo = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log(data);
 
     return data;
   }
@@ -60,7 +58,7 @@ export const createToDo = createAsyncThunk(
 export const changeTodo = createAsyncThunk(
   "todos/changeTodo",
   async ({ token, id, newFields }) => {
-    const response = await fetch(`${URL}/api/tasks/${id}`, {
+    const response = await fetch(`${URL}/api/tasks/${id}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -74,9 +72,27 @@ export const changeTodo = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log(data);
 
-    return data;
+    return { data: data, id: id };
+  }
+);
+
+export const deleteTodo = createAsyncThunk(
+  "todos/deleteTodo",
+  async ({ token, id }) => {
+    const response = await fetch(`${URL}/api/tasks/${id}/`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+
+    });
+
+    const data = await response.json();
+    console.log(data)
+
+    return {data, id}
   }
 );
 
@@ -99,6 +115,30 @@ const todoSlice = createSlice({
     builder.addCase(getTodos.pending, (state, action) => {
       state.isLoading = true;
     });
+
+    builder.addCase(changeTodo.fulfilled, (state, action) => {
+      const todo = state.todoList.find((el) => el.id === action.payload.id);
+      const index = state.todoList.indexOf(todo);
+
+      const array = [...state.todoList];
+      array[index] = action.payload.data;
+
+      state.todoList = [...array];
+    });
+
+    builder.addCase(deleteTodo.fulfilled, (state, action) => {
+
+      const todo = state.todoList.find((el) => el.id === action.payload.id);
+      const index = state.todoList.indexOf(todo);
+      const array = [...state.todoList];
+      array.splice(index, 1)
+
+      state.todoList = [...array]
+   
+    });
+
+
+
   },
 });
 
