@@ -45,10 +45,20 @@
 }
 
 .task-modal__input {
+  outline: 4px solid transparent;
+  border: none;
   padding: 5px 10px;
   height: 50px;
   border-radius: 5px;
   font-size: 22px;
+  transition: outline 0.3s ease-in-out, transform 0.35s ease-in-out;
+  transform: scale(1);
+}
+
+.task-modal__input:focus {
+  transform: scale(1.005);
+  outline: 4px solid rgb(180, 134, 239);
+  transition: outline 0.3s ease-in-out, transform 0.35s ease-in-out;
 }
 
 .task-modal__input::placeholder {
@@ -58,11 +68,11 @@
 .task-modal__apply {
   width: 50%;
   background-color: transparent;
-  border: 1px solid black;
+  border: none;
   border-radius: 5px;
   padding: 15px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 25px;
 }
 
 .task-modal__delete {

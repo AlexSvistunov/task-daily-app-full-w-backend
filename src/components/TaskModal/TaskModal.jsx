@@ -149,8 +149,8 @@ const TaskModal = ({
           </button>
         </div>
 
-        <div>CHANGE COLOR</div>
-        <div>CHANGE TAGS</div>
+        {/* <div>CHANGE COLOR</div>
+        <div>CHANGE TAGS</div> */}
       </div>
     </div>
   );

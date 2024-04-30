@@ -28,3 +28,26 @@
 .header__link {
   font-size: 18px;
 }
+
+.header__user {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__user-email {
+  color: #CA87F4;
+  font-size: 20px;
+}
+
+.header__user-logout {
+  background-color: transparent;
+  border: 1px solid #CA87F4;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #CA87F4;
+}
+
+

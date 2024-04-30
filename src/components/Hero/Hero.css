@@ -37,6 +37,7 @@
 }
 
 .hero__link {
+  outline: 3px solid transparent;
   border-radius: 12px;
   max-width: 215px;
   width: 100%;
@@ -49,6 +50,13 @@
   color: #000;
 }
 
+.hero__link:hover {
+  outline: 3px solid rgba(144, 10, 211, 0.3);
+  box-shadow: 0 4px 4px 0 rgba(144, 10, 211, 0.3);
+  transition: all .35s ease-in-out;
+
+}
+
 .hero__cards {
   padding: 50px;
   display: grid;
@@ -58,11 +66,23 @@
 }
 
 .hero__card {
+  cursor: pointer;
   padding: 25px;
   min-height: 260px;
   border-radius: 8px;
   fill: #f8f9fa;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 2px 5px 41px -5px rgba(0,0,0,0.31);
+  -moz-box-shadow: 2px 5px 41px -5px rgba(0,0,0,0.31);
+  box-shadow: 2px 5px 41px -5px rgba(0,0,0,0.31);
+  transition: transform 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
+}
+
+.hero__card:hover {
+  transform: scale(1.1);
+  -webkit-box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
+  -moz-box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
+  box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
+  transition: transform 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
 }
 
 .hero__card-title {

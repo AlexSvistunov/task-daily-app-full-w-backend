@@ -34,21 +34,13 @@ const Header = () => {
         <Link className="logo header__logo" to={ROUTES.LANDINGPAGE}></Link>
 
         {isAuth ? (
-          <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
-            <div style={{ color: "#CA87F4", fontSize: "20px" }}>
+          <div className="header__user">
+            <div className="header__user-email">
               {myData.email}
             </div>
-            <button
+            <button className="header__user-logout"
               onClick={logOutHandler}
-              style={{
-                background: "transparent",
-                border: "1px solid #CA87F4",
-                cursor: "pointer",
-                fontSize: "20px",
-                padding: "5px 10px",
-                borderRadius: "5px",
-                color: "#CA87F4",
-              }}
+             
             >
               Log out
             </button>

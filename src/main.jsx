@@ -50,3 +50,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // подумать в целом про запросы допустим к email или redux
 // подумать про обработку ошибок
 // а если токен недопустимый?
+
+// нужно придумать акцентный цвет
+// все ховеры, фокусы, focus-visible, active

@@ -6,6 +6,7 @@ import ROUTES from "../../utils/routes";
 
 const Hero = () => {
   const { isAuth } = useAuth();
+  
   return (
     <section className="hero">
       <div className="container">
