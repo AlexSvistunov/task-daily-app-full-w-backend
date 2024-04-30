@@ -1,7 +1,5 @@
-
 import { getTodos } from "../../store/slices/todoSlice";
 import { useAuth } from "../../hooks/use-auth";
-
 
 import { useEffect } from "react";
 
@@ -17,12 +15,21 @@ const TaskModal = ({
   dataModal,
   setDataModal,
 }) => {
-
   const { email, token } = useAuth();
   const dispatch = useDispatch();
 
   async function updateTitle() {
-    await dispatch(changeTodo({token, id: dataModal.id, newFields: {title: dataModal.title, description: dataModal.description}}));
+    await dispatch(
+      changeTodo({
+        token,
+        id: dataModal.id,
+        newFields: {
+          title: dataModal.title,
+          description: dataModal.description,
+        },
+      })
+    );
+    setModalIsOpen(false);
   }
 
   function hexToRgb(hex) {
@@ -35,10 +42,9 @@ const TaskModal = ({
   }
 
   const deleteTask = async () => {
-   await dispatch(deleteTodo({token, id: dataModal.id}))
-  
-  }
-
+    await dispatch(deleteTodo({ token, id: dataModal.id }));
+    setModalIsOpen(false);
+  };
 
   console.log(dataModal);
   return (
