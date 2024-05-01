@@ -121,7 +121,7 @@
 }
 
 .react-calendar__tile--now {
-  background-color: rgb(109, 5, 245) !important;
+  background-color: rgb(134, 110, 251) !important;
 }
 
 
@@ -137,6 +137,10 @@
 
 .react-calendar__tile {
   padding: 15px;
+}
+
+.react-calendar__navigation__label[type='button']:hover {
+  background-color: transparent !important;
 }
 
 

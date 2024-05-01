@@ -29,7 +29,7 @@ const Hero = () => {
         </div>
 
         <ul className="hero__cards list-reset">
-          <li className="hero__card">
+          <li className="hero__card" tabIndex='0'>
             <h3 className="hero__card-title">Easy to use</h3>
 
             <p className="hero__card-text">
@@ -38,7 +38,7 @@ const Hero = () => {
             </p>
           </li>
 
-          <li className="hero__card">
+          <li className="hero__card" tabIndex='0'>
             <h3 className="hero__card-title">Full Support</h3>
 
             <p className="hero__card-text">
@@ -47,7 +47,7 @@ const Hero = () => {
             </p>
           </li>
 
-          <li className="hero__card">
+          <li className="hero__card" tabIndex='0'>
             <h3 className="hero__card-title">Never feel lost</h3>
 
             <p className="hero__card-text">

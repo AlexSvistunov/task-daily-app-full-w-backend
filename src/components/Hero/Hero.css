@@ -85,6 +85,7 @@
 }
 
 .hero__card {
+  outline: 1px solid transparent;
   cursor: pointer;
   padding: 25px;
   min-height: 260px;
@@ -97,6 +98,16 @@
 }
 
 .hero__card:hover {
+  
+  transform: scale(1.1);
+  -webkit-box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
+  -moz-box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
+  box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
+  transition: transform 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
+}
+
+.hero__card:focus-visible {
+  outline: 1px solid transparent;
   transform: scale(1.1);
   -webkit-box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
   -moz-box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);

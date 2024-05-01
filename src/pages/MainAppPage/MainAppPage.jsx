@@ -99,9 +99,9 @@ const MainAppPage = () => {
               )}
             </header>
             <main>
-              <div className="inner" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '50px', paddingTop: '25px'}}>
-                <h1 className="title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
-                <button className="inner__btn" onClick={() => setIsSortedByTags(!isSortedByTags)}>Sort by tags</button>
+              <div className="main" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '50px', paddingTop: '25px'}}>
+                <h1 className="main__title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
+                <button className="main__btn" onClick={() => setIsSortedByTags(!isSortedByTags)}>Sort by tags</button>
               </div>
               {showList ? (
                 <TaskList
@@ -124,58 +124,6 @@ const MainAppPage = () => {
         </div>
       )}
 
-      {/* {todoIsOpen ? <div className="page-app">
-        <Aside currentDay={currentDate} changeDay={changeDate} />
-
-        <div className="page-app__main">
-          <header className="page-app__header">
-            {email && (
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "20px" }}
-              >
-                <button className="page-app__header-theme"></button>
-                <div className="user">
-                  <button
-                    className="page-app__header-user"
-                    onClick={() => setIsDropdownShown(!isDropdownShown)}
-                  ></button>
-                  <div
-                    className={
-                      isDropdownShown
-                        ? "user__dropdown user__dropdown--active"
-                        : "user__dropdown"
-                    }
-                  >
-                    <button>Avatar</button>
-                    <button>Settings</button>
-                    <button onClick={logOutHandler}>Log out</button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </header>
-          <main>
-            <h1 className="title">{currentDate.toDateString()}</h1>
-            {showList ? (
-              <TaskList
-                showListHandler={showListHandler}
-                currentDate={currentDate}
-                arrayListInfo={arrayListInfo}
-                setArrayListInfo={setArrayListInfo}
-               
-              />
-            ) : (
-              <CreateTask
-                currentDate={currentDate}
-                showListHandler={showListHandler}
-                arrayListInfo={arrayListInfo}
-                setArrayListInfo={setArrayListInfo}
-               
-              />
-            )}
-          </main>
-        </div>
-      </div> : null} */}
       <BottomSide openCalendar={openCalendar} closeCalendar={closeCalendar} />
     </>
   );
