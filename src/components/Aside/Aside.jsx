@@ -8,7 +8,6 @@ import ROUTES from "../../utils/routes";
 
 const Aside = ({ currentDay, changeDay }) => {
   const todos = useSelector((state) => state.todos.todoList)
-  // const todosForDate = todos && todos.filter((el) => el['day'] === currentDay.toLocaleDateString()).length
   return (
     <aside className="aside">
       <div className="aside__inner">
@@ -25,32 +24,12 @@ const Aside = ({ currentDay, changeDay }) => {
             <span className="task__name">For this day</span>
             <span className="task__amount">
               {todos.length}
-              {/* {todosForDate && todosForDate.length} */}
             </span>
           </li>
-          {/* {todosForDate > 0 && (
-            <li className="task">
-            <span className="task__name">Done</span>
-            <span className="task__amount">
-            {todos && todos.filter((el) => el['day'] === currentDay.toLocaleDateString() && el['done']).length}
-            </span>
-          </li>
-          )}  */}
+          
          
         </ul>
 
-        {/* <ul className="lists">
-          <h3 className="lists__title">Lists</h3>
-          <li className="list">
-            <span className="list__title">Daily Routine</span>
-            <span className="list__amount">2</span>
-          </li>
-
-          <li className="list">
-            <span className="list__title">Study</span>
-            <span className="list__amount">0</span>
-          </li>
-        </ul> */}
       </div>
     </aside>
   );

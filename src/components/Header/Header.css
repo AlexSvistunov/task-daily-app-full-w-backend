@@ -36,18 +36,18 @@
 }
 
 .header__user-email {
-  color: #CA87F4;
+  color: var(--accent-color);
   font-size: 20px;
 }
 
 .header__user-logout {
   background-color: transparent;
-  border: 1px solid #CA87F4;
+  border: 1px solid var(--accent-color);
   cursor: pointer;
   font-size: 20px;
   padding: 5px 10px;
   border-radius: 5px;
-  color: #CA87F4;
+  color: var(--accent-color);
 }
 
 

@@ -21,7 +21,7 @@
   margin-bottom: 16px;
   font-weight: 400;
   font-size: 64px;
-  color: #000;
+  color: var(--accent-color);
 }
 
 .hero__title span {
@@ -32,29 +32,48 @@
   display: block;
   font-weight: 300;
   font-size: 24px;
-  color: #000;
+  color: var(--accent-color--light);
   margin-bottom: 72px;
 }
 
 .hero__link {
-  outline: 3px solid transparent;
+  display: inline-block;
+  outline: 2px solid transparent;
   border-radius: 12px;
   max-width: 215px;
   width: 100%;
   padding: 12px 38px;
   min-height: 60px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background: #f9fafb;
+  -webkit-box-shadow: 1px 4px 35px -3px  rgba(144, 10, 211, 0.3);
+  -moz-box-shadow: 1px 4px 35px -3px  rgba(144, 10, 211, 0.3);
+  box-shadow: 1px 4px 35px -3px  rgba(144, 10, 211, 0.3);
+  background: var(--accent-color--light);
   font-weight: 500;
   font-size: 24px;
-  color: #000;
+  color:  var(--light-color);
+  transition: all .35s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero__link:hover {
-  outline: 3px solid rgba(144, 10, 211, 0.3);
-  box-shadow: 0 4px 4px 0 rgba(144, 10, 211, 0.3);
+  outline: 2px solid var(--accent-color);
+  -webkit-box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
+  -moz-box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
+  box-shadow: 2px 5px 41px -5px  rgba(144, 10, 211, 0.3);
   transition: all .35s ease-in-out;
+}
 
+.hero__link:focus-visible {
+  outline: 2px solid var(--accent-color);
+  transform: scale(1.045);
+  transition: all .35s ease-in-out;
+}
+
+.hero__link:active{
+  transform: scale(1.045);
+  transition: all .35s ease-in-out;
 }
 
 .hero__cards {
@@ -90,12 +109,12 @@
   margin-bottom: 20px;
   font-weight: 500;
   font-size: 24px;
-  color: #000;
+  color: var(--accent-color);
 }
 
 .hero__card-text {
   margin: 0;
   font-weight: 300;
   font-size: 20px;
-  color: #000;
+  color: var(--dark-color);
 }
