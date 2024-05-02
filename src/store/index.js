@@ -4,8 +4,6 @@ import todoReducer from './slices/todoSlice'
 
 
 
-
-
 export const store = configureStore({
   reducer: {
     user: userReducer,
