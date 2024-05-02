@@ -13,10 +13,13 @@ export const login = createAsyncThunk(
       body: JSON.stringify({ password: password, email: email }),
     });
 
-    
-
     const data = await response.json();
-    return data;
+
+    if (data.auth_token) {
+      return data;
+    } else {
+      return;
+    }
   }
 );
 
@@ -57,7 +60,13 @@ export const signUp = createAsyncThunk(
 
     const data = await response.json();
 
-    return data;
+    
+    if (data.auth_token) {
+      return data;
+    } else {
+      return;
+    }
+
   }
 );
 
@@ -95,8 +104,11 @@ const userSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      state.token = action.payload.auth_token;
-      localStorage.setItem("token", action.payload.auth_token);
+      console.log(action.payload);
+      if(action.payload.auth_token) {
+        state.token = action.payload.auth_token;
+        localStorage.setItem("token", action.payload.auth_token);
+      }
     });
 
     builder.addCase(logOut.fulfilled, (state) => {

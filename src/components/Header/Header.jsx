@@ -13,6 +13,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [myData, setMyData] = useState("");
+  console.log(myData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +37,7 @@ const Header = () => {
         {isAuth ? (
           <div className="header__user">
             <div className="header__user-email">
-              {myData.email}
+              {myData && myData.email}
             </div>
             <button className="header__user-logout"
               onClick={logOutHandler}
