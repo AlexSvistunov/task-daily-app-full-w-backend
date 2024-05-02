@@ -29,7 +29,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
   }, []);
 
   const todos = useSelector((state) => state.todos.todoList);
-  console.log(todos);
+
 
   const validateTask = () => {
     if (!title) {

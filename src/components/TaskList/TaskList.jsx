@@ -26,14 +26,14 @@ const TaskList = ({
 
   useEffect(() => {
     const fetchRequest = async () => {
-      const response = await dispatch(getTodos({token, currentDate}));
-      console.log(response)
+      await dispatch(getTodos({ token, currentDate }));
     };
 
-    fetchRequest()
+    fetchRequest();
   }, [dispatch, token, currentDate]);
 
   const todos = useSelector((state) => state.todos.todoList);
+  console.log(todos);
   const isLoading = useSelector((state) => state.todos.isLoading);
 
   if (isLoading) {
@@ -51,82 +51,76 @@ const TaskList = ({
     );
   }
 
-  return <>
-      {/* <button className="task-list__btn" onClick={showListHandler}>
-        <span className="material-symbols-outlined">add_task</span>
-      </button> */}
-
+  return (
+    <>
       <section className="task-list">
-      <ul className="tasks-list">
+        <ul className="tasks-list">
+          {todos.length ? (
+            todos
+              .filter((element) => !element.done)
+              .map((el) => (
+                <TaskItem
+                  key={el.title}
+                  color={el.color_code}
+                  setModalIsOpen={setModalIsOpen}
+                  setDataModal={setDataModal}
+                  dataModal={dataModal}
+                  el={el}
+                  index={el.currentIndex}
+                />
+              ))
+          ) : (
+            <img
+              src="/nothing-here.png"
+              style={{ display: "block", margin: "200px auto" }}
+            ></img>
+          )}
+        </ul>
+
         {todos.length ? (
-          todos
-            .filter((element) => !element.done)
-            .map((el) => (
-              <TaskItem
-                key={el.title}
-                color={el.color_code}
-                setModalIsOpen={setModalIsOpen}
-                setDataModal={setDataModal}
-                dataModal={dataModal}
-                el={el}
-                index={el.currentIndex}
-              />
-            ))
-        ) : (
-          <img
-            src="/nothing-here.png"
-            style={{ display: "block", margin: "200px auto" }}
-          ></img>
+          <div className="task-list__done">
+            <h3 className="task-list__done-title">Done</h3>
+            <ul className="tasks-list__done">
+              {todos.length ? (
+                todos
+                  .filter((element) => element.done)
+                  .map((el) => (
+                    <TaskItem
+                      key={el.title}
+                      color={el.color}
+                      setModalIsOpen={setModalIsOpen}
+                      setDataModal={setDataModal}
+                      dataModal={dataModal}
+                      el={el}
+                      index={el.currentIndex}
+                    />
+                  ))
+              ) : (
+                <img
+                  src="/nothing-here.png"
+                  style={{ display: "block", margin: "200px auto" }}
+                ></img>
+              )}
+            </ul>
+          </div>
+        ) : null}
+        <button className="task-list__btn" onClick={showListHandler}>
+          <span className="material-symbols-outlined">add_task</span>
+        </button>
+
+        {modalIsOpen && (
+          <TaskModal
+            modalIsOpen={modalIsOpen}
+            setModalIsOpen={setModalIsOpen}
+            dataModal={dataModal}
+            setDataModal={setDataModal}
+            index={index}
+            setIndex={setIndex}
+          />
         )}
-      </ul>
-
-      {todos.length ? (
-        <div className="task-list__done">
-          <h3 className="task-list__done-title">Done</h3>
-          <ul className="tasks-list__done">
-            {todos.length ? (
-              todos
-                .filter((element) => element.done)
-                .map((el) => (
-                  <TaskItem
-                    key={el.title}
-                    color={el.color}
-                    setModalIsOpen={setModalIsOpen}
-                    setDataModal={setDataModal}
-                    dataModal={dataModal}
-                    el={el}
-                    index={el.currentIndex}
-                  />
-                ))
-            ) : (
-              <img
-                src="/nothing-here.png"
-                style={{ display: "block", margin: "200px auto" }}
-              ></img>
-            )}
-          </ul>
-        </div>
-      ) : null}
-      <button className="task-list__btn" onClick={showListHandler}>
-        <span className="material-symbols-outlined">add_task</span>
-      </button>
-
-      {modalIsOpen && (
-        <TaskModal
-          modalIsOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
-          dataModal={dataModal}
-          setDataModal={setDataModal}
-          index={index}
-          setIndex={setIndex}
-        />
-      )}
-    </section>
-  </>;
+      </section>
+    </>
+  );
 };
 
 export default TaskList;
-
-// только со второго раза изменяет на done, так как useState =)
-
-// сделать отдельный элемент =) todoItem
