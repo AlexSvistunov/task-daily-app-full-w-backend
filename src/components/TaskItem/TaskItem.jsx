@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getTodos } from "../../store/slices/todoSlice";
+import { changeTodo, getTodos } from "../../store/slices/todoSlice";
 import { useAuth } from "../../hooks/use-auth";
 
 const TaskItem = ({
@@ -13,11 +13,12 @@ const TaskItem = ({
   updateIsDone,
   index,
 }) => {
+  const dispatch = useDispatch();
+
   const { email, token } = useAuth();
+
   const [isCheckedInput, setIsCheckedInput] = useState(
-    useSelector((state) => state.todos.todoList).find(
-      (el) => el.currentIndex === index
-    )["done"]
+    el.completed
   );
 
 
@@ -34,17 +35,26 @@ const TaskItem = ({
     >
       <div className="checkbox-wrapper-12">
         <div className="cbx">
-          <input id="cbx-12" type="checkbox" checked={isCheckedInput} onChange={(e) => {
-          setIsCheckedInput(!isCheckedInput);
-          setDataModal({
-            ...dataModal,
-            ["done"]: isCheckedInput,
-          });
-          
-          setTimeout(() => {
-            updateIsDone(index, isCheckedInput);
-          }, 500)
-        }} />
+          <input
+            id="cbx-12"
+            type="checkbox"
+            checked={isCheckedInput}
+            onChange={(e) => {
+              setIsCheckedInput(!isCheckedInput);
+
+              dispatch(
+                changeTodo({
+                  token,
+                  id: el.id,
+                  newFields: {
+                    title: el.title,
+                    description: el.description,
+                    completed: !isCheckedInput,
+                  },
+                })
+              );
+            }}
+          />
           <label></label>
           <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
             <path d="M2 8.36364L6.23077 12L13 2"></path>

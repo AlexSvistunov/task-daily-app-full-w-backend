@@ -33,7 +33,6 @@ const TaskList = ({
   }, [dispatch, token, currentDate]);
 
   const todos = useSelector((state) => state.todos.todoList);
-  console.log(todos);
   const isLoading = useSelector((state) => state.todos.isLoading);
 
   if (isLoading) {

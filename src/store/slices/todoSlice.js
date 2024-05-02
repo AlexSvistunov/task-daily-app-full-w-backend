@@ -66,8 +66,9 @@ export const changeTodo = createAsyncThunk(
       },
 
       body: JSON.stringify({
-        title: newFields.title ? newFields.title : null,
-        description: newFields.description ? newFields.description : null,
+        title: newFields.title,
+        description: newFields.description,
+        completed: newFields.completed,
       }),
     });
 
