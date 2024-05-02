@@ -32,8 +32,11 @@ const TaskList = ({
     fetchRequest();
   }, [dispatch, token, currentDate]);
 
-  const todos = useSelector((state) => state.todos.todoList);
+  const todos = useSelector((state) => state.todos.todoList)
   const isLoading = useSelector((state) => state.todos.isLoading);
+
+  console.log(todos);
+
 
   if (isLoading) {
     return (
@@ -56,7 +59,7 @@ const TaskList = ({
         <ul className="tasks-list">
           {todos.length ? (
             todos
-              .filter((element) => !element.done)
+              .filter((element) => element.completed === false)
               .map((el) => (
                 <TaskItem
                   key={el.title}
@@ -82,11 +85,11 @@ const TaskList = ({
             <ul className="tasks-list__done">
               {todos.length ? (
                 todos
-                  .filter((element) => element.done)
+                  .filter((element) => element.completed === true)
                   .map((el) => (
                     <TaskItem
                       key={el.title}
-                      color={el.color}
+                      color={el.color_code}
                       setModalIsOpen={setModalIsOpen}
                       setDataModal={setDataModal}
                       dataModal={dataModal}

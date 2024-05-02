@@ -42,17 +42,19 @@ const TaskItem = ({
             onChange={(e) => {
               setIsCheckedInput(!isCheckedInput);
 
-              dispatch(
-                changeTodo({
-                  token,
-                  id: el.id,
-                  newFields: {
-                    title: el.title,
-                    description: el.description,
-                    completed: !isCheckedInput,
-                  },
-                })
-              );
+              setTimeout(() => {
+                dispatch(
+                  changeTodo({
+                    token,
+                    id: el.id,
+                    newFields: {
+                      title: el.title,
+                      description: el.description,
+                      completed: !isCheckedInput,
+                    },
+                  })
+                );
+              }, 750)
             }}
           />
           <label></label>

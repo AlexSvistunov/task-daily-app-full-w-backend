@@ -53,3 +53,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 // нужно придумать акцентный цвет
 // все ховеры, фокусы, focus-visible, active
+// сначала проигрывает анимация, потом салют, потом он плавно едет, потом только уже отображается в done
+
