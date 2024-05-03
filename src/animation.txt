@@ -1,0 +1,28 @@
+Для того чтобы задача перемещалась точно под другими выполненными задачами при завершении анимации, вам нужно будет динамически устанавливать позицию элемента после завершения анимации.
+
+Примерно такой будет ваш JavaScript код:
+
+const checkbox = document.getElementById('checkbox');
+const task = document.getElementById('task');
+
+checkbox.addEventListener('change', function() {
+  if (checkbox.checked) {
+    task.classList.add('animation-class');
+    
+    setTimeout(() => {
+      // Перемещение элемента из списка невыполненных задач в список выполненных задач
+      document.getElementById('done-tasks').appendChild(task);
+      task.classList.remove('animation-class');
+
+      // Установка позиции элемента точно под другими выполненными задачами
+      const doneTasks = document.querySelectorAll('.done-task');
+      const lastDoneTask = doneTasks[doneTasks.length - 1];
+      const taskHeight = task.offsetHeight;
+      const topPosition = lastDoneTask.offsetTop + lastDoneTask.offsetHeight + 16; // 16px - отступ между задачами
+      task.style.top = topPosition + 'px';
+    }, 1000); // Время анимации
+  }
+});
+В данном примере, после перемещения элемента в список выполненных задач, мы находим последнюю выполненную задачу и устанавливаем позицию текущей задачи точно под нею с учетом отступа между задачами.
+
+Не забудьте также добавить соответствующие стили для задач в списке выполненных задач, чтобы они отображались корректно.

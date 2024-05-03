@@ -12,6 +12,7 @@
 
 .task-list__done-title {
   font-size: 27px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #ccc;
 }
 
@@ -56,6 +57,7 @@
 }
 
 .tasks-list__task {
+  position: relative;
   padding: 16px;
   display: flex;
   align-items: center;
@@ -64,6 +66,9 @@
   min-height: 75px;
   cursor: pointer;
 }
+
+
+
 
 
 .list-task__title {

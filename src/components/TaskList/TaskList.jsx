@@ -62,7 +62,7 @@ const TaskList = ({
               .filter((element) => element.completed === false)
               .map((el) => (
                 <TaskItem
-                  key={el.title}
+                  key={el.id}
                   color={el.color_code}
                   setModalIsOpen={setModalIsOpen}
                   setDataModal={setDataModal}
@@ -88,7 +88,7 @@ const TaskList = ({
                   .filter((element) => element.completed === true)
                   .map((el) => (
                     <TaskItem
-                      key={el.title}
+                      key={el.id}
                       color={el.color_code}
                       setModalIsOpen={setModalIsOpen}
                       setDataModal={setDataModal}

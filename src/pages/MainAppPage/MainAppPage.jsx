@@ -101,7 +101,7 @@ const MainAppPage = () => {
             <main>
               <div className="main" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '50px', paddingTop: '25px'}}>
                 <h1 className="main__title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
-                <button className="main__btn" onClick={() => setIsSortedByTags(!isSortedByTags)}>Sort by tags</button>
+                {showList && <button className="main__btn" onClick={() => setIsSortedByTags(!isSortedByTags)}>Sort by tags</button>}
               </div>
               {showList ? (
                 <TaskList

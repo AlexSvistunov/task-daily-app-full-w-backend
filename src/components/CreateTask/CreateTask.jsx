@@ -92,11 +92,14 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
       </div>
       <div className="new-task__colors">
         <button
+
           className={
             currentColor[0] === "Фисташковый"
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+
+          tabIndex='0'
           onClick={() => setColor(["Фисташковый", "#ADF7B6"])}
         >
           <svg
@@ -112,8 +115,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#ADF7B6"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -124,6 +126,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Фиолетово-Розовый", "#A817C0"])}
         >
           <svg
@@ -139,8 +142,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#A817C0"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -151,6 +153,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Бежевый", "#FFC09F"])}
         >
           <svg
@@ -166,8 +169,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#FFC09F"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -178,6 +180,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Голубой", "#B0FFFA"])}
         >
           <svg
@@ -193,8 +196,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#B0FFFA"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+ 
             />
           </svg>
         </button>
@@ -205,6 +207,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Желтый", "#FCFF52"])}
         >
           <svg
@@ -220,8 +223,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#FCFF52"
               fillOpacity="0.94"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -232,6 +234,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Зеленый", "#4EFF31"])}
         >
           <svg
@@ -246,8 +249,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               cy="25.6829"
               r="23.2752"
               fill="#4EFF31"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -258,6 +260,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Бирюзовый", "#5BFFD8"])}
         >
           <svg
@@ -273,8 +276,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#5BFFD8"
               fillOpacity="0.99"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -285,6 +287,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Синий", "#0038FF"])}
         >
           <svg
@@ -300,8 +303,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#0038FF"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -312,6 +314,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Фиолетовый", "#622BFF"])}
         >
           <svg
@@ -327,8 +330,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#622BFF"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -339,6 +341,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Малиновый", "#D21DFF"])}
         >
           <svg
@@ -354,8 +357,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#D21DFF"
               fillOpacity="0.85"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -366,6 +368,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Алый", "#B92350"])}
         >
           <svg
@@ -381,8 +384,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#B92350"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -393,6 +395,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Красный", "#FF0000"])}
         >
           <svg
@@ -407,8 +410,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               cy="25.6829"
               r="23.2752"
               fill="#FF0000"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -419,6 +421,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Белый", "#E9E3E8"])}
         >
           <svg
@@ -434,8 +437,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#E9E3E8"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>
@@ -446,6 +448,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               ? "new-task__color new-task__color--active"
               : "new-task__color"
           }
+          tabIndex='0'
           onClick={() => setColor(["Серый", "#554E55"])}
         >
           <svg
@@ -461,8 +464,7 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
               r="23.2752"
               fill="#554E55"
               fillOpacity="0.6"
-              stroke="#EDEAEA"
-              strokeWidth="4.81555"
+
             />
           </svg>
         </button>

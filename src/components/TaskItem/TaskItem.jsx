@@ -24,7 +24,7 @@ const TaskItem = ({
 
   return (
     <li
-      className="tasks-list__task list-task"
+      className={!isCheckedInput ? "tasks-list__task list-task" : "tasks-list__task list-task tasks-list__task--checked"}
       style={{ backgroundColor: color }}
       onClick={(e) => {
         if (e.target.tagName !== "INPUT" && e.target.tagName !== "SPAN") {
