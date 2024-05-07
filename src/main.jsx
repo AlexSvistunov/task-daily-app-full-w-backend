@@ -41,7 +41,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // а если запрос для получение email долго идет?
 
 // если пользователь уже зареган или авторизован - то нет смысла ему переходить в роуты Login, Register
-//update is done
+
 
 
 // register validation
