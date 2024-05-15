@@ -2,14 +2,13 @@ import Auth from "../Auth/Auth";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../utils/routes";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../store/slices/userSlice";
 import { signUp } from "../../store/slices/userSlice";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const onClickAuth = (email, password) => {
+  const onClickAuthRegister = (email, password) => {
     dispatch(signUp({ email, password })).then((data) => {
       if (data.payload.email) {
         alert(data.payload.email);
@@ -25,7 +24,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Auth propWord={"Sign Up"} onClickAuth={onClickAuth} />
+      <Auth propWord={"Sign Up"} onClickAuth={onClickAuthRegister} />
     </>
   );
 };

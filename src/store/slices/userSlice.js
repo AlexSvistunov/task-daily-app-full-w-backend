@@ -73,6 +73,7 @@ export const signUp = createAsyncThunk(
 export const getMyData = createAsyncThunk(
   "user/getMyData",
   async ({ token }) => {
+    console.log(token)
     const response = await fetch(`${URL}/api/users/`, {
       method: "GET",
       headers: {

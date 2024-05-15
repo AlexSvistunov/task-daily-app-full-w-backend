@@ -5,11 +5,7 @@ const LandingPage = () => {
   return (
     <>
       <Header />
-      <section>
-        <div className="container">
-          <Hero/>
-        </div>
-      </section>
+      <Hero />
     </>
   );
 };
