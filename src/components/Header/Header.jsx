@@ -25,7 +25,7 @@ const Header = () => {
   }, [dispatch, token]);
 
   const logOutHandler = () => {
-    dispatch(logOut(token));
+    dispatch(logOut({token}));
   };
   return (
     <header className="header">

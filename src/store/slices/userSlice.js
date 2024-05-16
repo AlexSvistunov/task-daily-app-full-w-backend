@@ -33,13 +33,10 @@ export const logOut = createAsyncThunk("user/logOut", async ({token}) => {
       },
     });
 
-    console.log(response);
-
-    const data = await response.json();
-    console.log(data);
-
+    
 
   } catch (error) {
+   
     throw new Error(error.message);
   }
 });
@@ -118,18 +115,17 @@ const userSlice = createSlice({
       if (action.payload["non_field_errors"]) {
         alert(action.payload["non_field_errors"][0]);
       }
-
-     
+  
     });
 
     builder.addCase(logOut.fulfilled, (state) => {
-      console.log('fulfilled');
+
       localStorage.removeItem("token");
       state.token = null;
     });
 
-    builder.addCase(logOut.rejected, (state) => {
-      console.log('rejected');
+    builder.addCase(logOut.rejected, () => {
+      alert('Вы не можете выйти с аккаунта')
     });
 
     builder.addCase(signUp.fulfilled, (state, action) => {
