@@ -25,8 +25,9 @@ export const getTodos = createAsyncThunk(
 );
 
 export const createToDo = createAsyncThunk(
-  "todos/createTodo",
+  "todos/createToDo",
   async ({ title, descr, color, tag, token, currentDate }) => {
+
     const date = currentDate;
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -34,7 +35,7 @@ export const createToDo = createAsyncThunk(
 
     const formattedDate = `${year}-${month}-${day}`;
 
-    const response = fetch(`${URL}/api/tasks/`, {
+    const response = await fetch(`${URL}/api/tasks/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,6 +51,7 @@ export const createToDo = createAsyncThunk(
     });
 
     const data = await response.json();
+    console.log(data);
 
     return data;
   }
@@ -108,6 +110,11 @@ const todoSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
+    // builder.addCase(createToDo.fulfilled, (state, action) => {
+    //   console.log(action.payload)
+    //   state.todoList = action.payload;
+    // });
+
     builder.addCase(getTodos.fulfilled, (state, action) => {
       state.todoList = action.payload;
       state.isLoading = false;

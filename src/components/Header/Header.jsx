@@ -2,7 +2,6 @@ import ROUTES from "../../utils/routes";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/use-auth";
-import { removeUser } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../store/slices/userSlice";
 import { getMyData } from "../../store/slices/userSlice";
@@ -13,7 +12,6 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [myData, setMyData] = useState("");
-  console.log(myData);
 
   useEffect(() => {
     const fetchData = async () => {

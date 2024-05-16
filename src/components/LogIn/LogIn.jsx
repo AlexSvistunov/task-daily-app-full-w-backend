@@ -12,10 +12,8 @@ const LogIn = () => {
 
   const onClickAuthLogin = async (email, password) => {
     await dispatch(login({ email, password })).then((data) => {
-      if (data.payload["non_field_errors"]) {
-        alert(data.payload["non_field_errors"][0]);
-        return;
-      }
+      console.log('data', data);
+      
 
       navigate(ROUTES.LANDINGPAGE);
     });

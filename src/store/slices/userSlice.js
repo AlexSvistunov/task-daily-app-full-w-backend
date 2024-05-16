@@ -4,28 +4,28 @@ import { URL } from "../../utils/api";
 export const login = createAsyncThunk(
   "user/login",
   async ({ password, email }) => {
-    const response = await fetch(`${URL}/api/auth/token/login/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    try {
+      const response = await fetch(`${URL}/api/auth/token/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      body: JSON.stringify({ password: password, email: email }),
-    });
+        body: JSON.stringify({ password: password, email: email }),
+      });
 
-    const data = await response.json();
-
-    if (data.auth_token) {
+      const data = await response.json();
       return data;
-    } else {
-      return;
+
+    } catch (error) {
+      alert(error.message)
     }
   }
 );
 
-export const logOut = createAsyncThunk("user/logOut", async (token) => {
+export const logOut = createAsyncThunk("user/logOut", async ({token}) => {
   try {
-    const response = fetch(`${URL}/api/auth/token/logout/`, {
+    const response = await fetch(`${URL}/api/auth/token/logout/`, {
       method: "POST",
 
       headers: {
@@ -33,15 +33,21 @@ export const logOut = createAsyncThunk("user/logOut", async (token) => {
       },
     });
 
-    if (response.status === "204") {
-      const data = await response.json();
-      return data;
-    }
+    console.log(response);
+
+    const data = await response.json();
+    console.log(data);
+
+
   } catch (error) {
-    console.error("Error!!!", error);
-    throw error;
+    throw new Error(error.message);
   }
 });
+
+    // if (response.status === "204") {
+    //   const data = await response.json();
+    //   return data;
+    // }
 
 export const signUp = createAsyncThunk(
   "user/signUp",
@@ -60,20 +66,18 @@ export const signUp = createAsyncThunk(
 
     const data = await response.json();
 
-    
     if (data.auth_token) {
       return data;
     } else {
       return;
     }
-
   }
 );
 
 export const getMyData = createAsyncThunk(
   "user/getMyData",
   async ({ token }) => {
-    console.log(token)
+    console.log(token);
     const response = await fetch(`${URL}/api/users/`, {
       method: "GET",
       headers: {
@@ -106,15 +110,26 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
       console.log(action.payload);
-      if(action.payload.auth_token) {
+      if (action.payload.auth_token) {
         state.token = action.payload.auth_token;
         localStorage.setItem("token", action.payload.auth_token);
       }
+
+      if (action.payload["non_field_errors"]) {
+        alert(action.payload["non_field_errors"][0]);
+      }
+
+     
     });
 
     builder.addCase(logOut.fulfilled, (state) => {
+      console.log('fulfilled');
       localStorage.removeItem("token");
       state.token = null;
+    });
+
+    builder.addCase(logOut.rejected, (state) => {
+      console.log('rejected');
     });
 
     builder.addCase(signUp.fulfilled, (state, action) => {
