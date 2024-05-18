@@ -17,7 +17,7 @@ const Auth = ({ propWord, onClickAuth }) => {
 
   return (
     <>
-      <div className="container">
+      <div className="container auth-container">
         <div className="auth">
           <div className="auth__inner">
             <h3 className="auth__title">{propWord} to HabitHub</h3>

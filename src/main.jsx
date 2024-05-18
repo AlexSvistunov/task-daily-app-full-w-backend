@@ -59,4 +59,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 // логин перебрасывает при ошибке
 // навигация с логином
+// box shadow на auth
+// auth inputs
 

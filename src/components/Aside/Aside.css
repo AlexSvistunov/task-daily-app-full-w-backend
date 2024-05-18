@@ -113,6 +113,9 @@
   font-weight: 500;
   color: rgba(30, 28, 28, 0.8);
   font-size: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .react-calendar button:hover {
