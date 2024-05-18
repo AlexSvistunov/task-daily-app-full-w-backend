@@ -46,7 +46,6 @@ const TaskModal = ({
     setModalIsOpen(false);
   };
 
-  console.log(dataModal);
   return (
     <div className="task-modal">
       <div

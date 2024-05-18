@@ -35,7 +35,6 @@ const TaskList = ({
   const todos = useSelector((state) => state.todos.todoList)
   const isLoading = useSelector((state) => state.todos.isLoading);
 
-  console.log(todos);
 
 
   if (isLoading) {

@@ -70,7 +70,6 @@ export const signUp = createAsyncThunk(
 export const getMyData = createAsyncThunk(
   "user/getMyData",
   async ({ token }) => {
-    console.log(token);
     const response = await fetch(`${URL}/api/users/`, {
       method: "GET",
       headers: {
@@ -102,7 +101,6 @@ const userSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      console.log(action.payload);
       if (action.payload.auth_token) {
         state.token = action.payload.auth_token;
         localStorage.setItem("token", action.payload.auth_token);

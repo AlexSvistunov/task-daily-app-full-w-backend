@@ -41,7 +41,6 @@ const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListI
   };
 
   const addTask = async (title, descr, email, day, color, tag) => {
-    console.log(123);
     await dispatch(createToDo({title, descr, color, tag, token, currentDate}))
     showListHandler()
   };

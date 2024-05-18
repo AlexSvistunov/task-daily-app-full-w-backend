@@ -61,4 +61,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // навигация с логином
 // box shadow на auth
 // auth inputs
+// adaptive create task
+// page app main height 100vh + px
+// ...props
+// use hooks to not use same code over and over again
 

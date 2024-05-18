@@ -51,7 +51,6 @@ export const createToDo = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log(data);
 
     return data;
   }
@@ -93,7 +92,6 @@ export const deleteTodo = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log(data)
 
     return {data, id}
   }
