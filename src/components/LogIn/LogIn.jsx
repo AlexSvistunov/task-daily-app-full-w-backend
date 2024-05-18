@@ -12,10 +12,9 @@ const LogIn = () => {
 
   const onClickAuthLogin = async (email, password) => {
     await dispatch(login({ email, password })).then((data) => {
-      console.log('data', data);
-      
-
-      navigate(ROUTES.LANDINGPAGE);
+      if (data.payload.auth_token) {
+        navigate(ROUTES.LANDINGPAGE);
+      }
     });
   };
 

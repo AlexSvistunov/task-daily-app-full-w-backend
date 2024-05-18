@@ -61,6 +61,8 @@ const MainAppPage = () => {
     }
   }, [isAuth, navigate]);
 
+
+
   return (
     <>
       {calendarIsOpen ? (

@@ -216,7 +216,7 @@ transition: .3s ease-in-out;
   }
 
   .new-task__btn {
-    bottom: 10%;
+    bottom: 12%;
     right: 4%
   }
 }

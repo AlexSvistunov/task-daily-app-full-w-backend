@@ -25,7 +25,7 @@ export const login = createAsyncThunk(
 
 export const logOut = createAsyncThunk("user/logOut", async ({token}) => {
   try {
-    const response = await fetch(`${URL}/api/auth/token/logout/`, {
+    await fetch(`${URL}/api/auth/token/logout/`, {
       method: "POST",
 
       headers: {
@@ -34,17 +34,13 @@ export const logOut = createAsyncThunk("user/logOut", async ({token}) => {
     });
 
     
-
   } catch (error) {
    
     throw new Error(error.message);
   }
 });
 
-    // if (response.status === "204") {
-    //   const data = await response.json();
-    //   return data;
-    // }
+
 
 export const signUp = createAsyncThunk(
   "user/signUp",
