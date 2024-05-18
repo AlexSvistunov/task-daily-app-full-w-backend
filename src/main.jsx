@@ -43,7 +43,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // если пользователь уже зареган или авторизован - то нет смысла ему переходить в роуты Login, Register
 
 
-
 // register validation
 // email
 // creating-todo
@@ -65,4 +64,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // page app main height 100vh + px
 // ...props
 // use hooks to not use same code over and over again
+// вернуться на лендинг чтобы можно было
+// обработка ошибок todoSlice, userSlice
 
