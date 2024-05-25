@@ -62,9 +62,15 @@ const TaskList = ({
      {sortedTodos.map((sortedTodo, index) => (
       <div key={index}>
         <h2>{Object.keys(sortedTodo)}</h2>
-        <div>{Object.values(sortedTodo).map(sortedTodoObject => (
+        <div className="tasks-list">{Object.values(sortedTodo).map(sortedTodoObject => (
           sortedTodoObject.map(el => (
-            <div key={el.id}>{el.title}</div>
+            <TaskItem key={el.id}
+            color={el.color_code}
+            setModalIsOpen={setModalIsOpen}
+            setDataModal={setDataModal}
+            dataModal={dataModal}
+            el={el}
+            index={el.currentIndex}/>
           ))
         ))}</div>
       </div>
