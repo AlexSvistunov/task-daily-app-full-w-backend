@@ -12,11 +12,14 @@ import { useNavigate } from "react-router-dom";
 import ROUTES from "../../utils/routes";
 import BottomSide from "../../components/BottomSide/BottomSide";
 import Calendar from "react-calendar";
+import { URL } from "../../utils/api";
+import { addToSortedList } from "../../store/slices/todoSlice";
 
 const MainAppPage = () => {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.user.email);
   const { isAuth } = useAuth();
+  const { token } = useAuth();
 
   const [showList, setShowList] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -63,6 +66,24 @@ const MainAppPage = () => {
 
 
 
+  const sortByTagsHandler = async () => {
+    try {
+      const response = await fetch(`${URL}/api/tasks-tag/`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
+      const data = await response.json()
+      console.log(data)
+      dispatch(addToSortedList(data))
+    } catch (error) {
+      console.log(error.message)
+    }
+  
+  }
+
+
   return (
     <>
       {calendarIsOpen ? (
@@ -83,7 +104,7 @@ const MainAppPage = () => {
                   <div className="user">
                     <button
                       className="page-app__header-user"
-                      onClick={() => setIsDropdownShown(!isDropdownShown)}
+                      onClick={() => {}}
                     ></button>
                     <div
                       className={
@@ -103,7 +124,10 @@ const MainAppPage = () => {
             <main>
               <div className="main" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '50px', paddingTop: '25px'}}>
                 <h1 className="main__title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
-                {showList && <button className="main__btn" onClick={() => setIsSortedByTags(!isSortedByTags)}>Sort by tags</button>}
+                {showList && <button className="main__btn" onClick={() => {
+                  setIsSortedByTags(!isSortedByTags)
+                  sortByTagsHandler()
+                }}>Sort by tags</button>}
               </div>
               {showList ? (
                 <TaskList

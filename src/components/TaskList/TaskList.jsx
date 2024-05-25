@@ -21,6 +21,9 @@ const TaskList = ({
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
 
+
+  console.log(currentDate)
+
   const { token } = useAuth();
   const dispatch = useDispatch();
 
@@ -32,9 +35,11 @@ const TaskList = ({
     fetchRequest();
   }, [dispatch, token, currentDate]);
 
-  const todos = useSelector((state) => state.todos.todoList)
-  const isLoading = useSelector((state) => state.todos.isLoading);
 
+  const todos = useSelector((state) => state.todos.todoList)
+  const sortedTodos = useSelector(state => state.todos.sortedList)
+  console.log(sortedTodos)
+  const isLoading = useSelector((state) => state.todos.isLoading);
 
 
   if (isLoading) {
@@ -50,6 +55,17 @@ const TaskList = ({
         <HashLoader color="#CA87F4" size={150} />
       </section>
     );
+  }
+
+  if(isSortedByTags) {
+    return <div>
+     {sortedTodos.map((sortedTodo, index) => (
+      <div>
+        <h2>{Object.keys(sortedTodo)}</h2>
+        <div></div>
+      </div>
+     ))}
+    </div>
   }
 
   return (

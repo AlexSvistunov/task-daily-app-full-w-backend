@@ -99,13 +99,21 @@ export const deleteTodo = createAsyncThunk(
 
 const initialState = {
   todoList: [],
+  sortedList: [],
   isLoading: false,
 };
 
 const todoSlice = createSlice({
   name: "todos",
   initialState,
-  reducers: {},
+  reducers: {
+    addToSortedList: (state, action) => {
+      console.log('123')
+      console.log(action)
+      console.log(action.payload)
+      state.sortedList = action.payload 
+    },
+  },
 
   extraReducers: (builder) => {
     // builder.addCase(createToDo.fulfilled, (state, action) => {
@@ -149,3 +157,4 @@ const todoSlice = createSlice({
 });
 
 export default todoSlice.reducer;
+export const {addToSortedList} = todoSlice.actions
