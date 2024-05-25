@@ -60,9 +60,13 @@ const TaskList = ({
   if(isSortedByTags) {
     return <div>
      {sortedTodos.map((sortedTodo, index) => (
-      <div>
+      <div key={index}>
         <h2>{Object.keys(sortedTodo)}</h2>
-        <div></div>
+        <div>{Object.values(sortedTodo).map(sortedTodoObject => (
+          sortedTodoObject.map(el => (
+            <div key={el.id}>{el.title}</div>
+          ))
+        ))}</div>
       </div>
      ))}
     </div>
