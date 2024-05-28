@@ -66,9 +66,17 @@ const MainAppPage = () => {
 
 
 
-  const sortByTagsHandler = async () => {
+  const sortByTagsHandler = async ({currentDate}) => {
+    console.log('currentDate', currentDate)
+    const date = currentDate;
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    const formattedDate = `${year}/${month}/${day}`;
+    console.log('formatted', formattedDate)
     try {
-      const response = await fetch(`${URL}/api/tasks-tag/`, {
+      const response = await fetch(`${URL}/api/tasks-tag/?date=${formattedDate}`, {
         method: 'GET',
         headers: {
           Authorization: `Token ${token}`,
@@ -126,7 +134,7 @@ const MainAppPage = () => {
                 <h1 className="main__title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
                 {showList && <button className="main__btn" onClick={() => {
                   setIsSortedByTags(!isSortedByTags)
-                  sortByTagsHandler()
+                  sortByTagsHandler({currentDate})
                 }}>Sort by tags</button>}
               </div>
               {showList ? (

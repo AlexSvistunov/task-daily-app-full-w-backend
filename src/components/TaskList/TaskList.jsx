@@ -21,7 +21,6 @@ const TaskList = ({
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
 
-
   console.log(currentDate)
 
   const { token } = useAuth();
