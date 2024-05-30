@@ -34,6 +34,23 @@ const array = [
   },
 ];
 
+async function getTag() {
+  try {
+    const response = await fetch(`${URL}/api/tasks-tag/?date=2024/05/31`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Token ${localStorage.getItem('token')}`,
+      },
+    })
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+getTag()
+
 // console.log(Object.keys(array[0]));
 // const values = Object.values(array[0])
 // values.forEach(el => {

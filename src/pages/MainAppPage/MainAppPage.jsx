@@ -66,7 +66,7 @@ const MainAppPage = () => {
 
 
 
-  const sortByTagsHandler = async ({currentDate}) => {
+  const sortByTagsHandler = async (currentDate) => {
     console.log('currentDate', currentDate)
     const date = currentDate;
     const year = date.getFullYear();
@@ -83,7 +83,6 @@ const MainAppPage = () => {
         },
       })
       const data = await response.json()
-      console.log(data)
       dispatch(addToSortedList(data))
     } catch (error) {
       console.log(error.message)
@@ -134,7 +133,7 @@ const MainAppPage = () => {
                 <h1 className="main__title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
                 {showList && <button className="main__btn" onClick={() => {
                   setIsSortedByTags(!isSortedByTags)
-                  sortByTagsHandler({currentDate})
+                  sortByTagsHandler(currentDate)
                 }}>Sort by tags</button>}
               </div>
               {showList ? (
